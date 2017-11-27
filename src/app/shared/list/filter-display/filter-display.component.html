@@ -1,0 +1,9 @@
+<div class="filter-display" layout="row" layout-align="space-between center">
+  <div class="filters text-sm" layout="row">
+    <md-icon class="icon clickable" (click)="toggleFilters.emit()">tune</md-icon>
+    <div>
+      <h2>{{ header }}</h2>
+      <span *ngFor="let field of fields" class="filter">{{ field.name | label }}: <span class="flair">{{ field.value }}</span></span>
+    </div>
+  </div>
+</div>

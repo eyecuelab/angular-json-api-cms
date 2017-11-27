@@ -1,0 +1,37 @@
+@import '../../../../assets/css/variables-mixins';
+
+md-input-container {
+  margin-bottom: 6px;
+  width: 100%;
+  font-family: $paragraph-font-family;
+
+  input[mdInput] {
+    font-size: 11pt;
+    color: $color-dark-grey;
+  }
+
+  .form-error {
+    font-family: $paragraph-font-family;
+    font-size: 9pt;
+    position: absolute;
+    bottom: -16px;
+    color: $color-red;
+    animation: shake-horizontal 0.6s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
+
+  .mat-placeholder-required {
+    display: none !important;
+  }
+
+  &.hide-placeholder {
+    /deep/ .mat-input-wrapper {
+      margin-top: 0;
+    }
+  }
+
+  /deep/ .mat-input-wrapper {
+    .mat-input-infix {
+      border-top: none;
+    }
+  }
+}

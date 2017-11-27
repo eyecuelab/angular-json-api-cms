@@ -1,0 +1,11 @@
+<div class="page-container" layout="column">
+  <div layout="row" class="page-container-inner">
+    <app-side-nav #sideNav></app-side-nav>
+    <div class="right-container">
+      <app-mobile-header [title]="'Devices'" (toggleNav)="sideNav.toggle()" hide-gt-xs></app-mobile-header>
+      <app-top-nav hide show-gt-xs></app-top-nav>
+      <app-main-tabs #mainTabs [tabs]="tabs"></app-main-tabs>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

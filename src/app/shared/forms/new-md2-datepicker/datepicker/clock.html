@@ -1,0 +1,18 @@
+﻿<div class="md2-clock-center"></div>
+<div class="md2-clock-hand" [ngStyle]="hand"></div>
+<div class="md2-clock-hours" [class.active]="_view">
+  <div *ngFor="let h of _hours"
+       [ngClass]="['md2-clock-hour', 'hour-' + h.hour.toString()]"
+       [class.active]="_hour == h.hour"
+       [style.top.px]="h.top"
+       (click)="setTime($event)"
+       [style.left.px]="h.left">{{ twelveHour(h.hour) }}</div>
+</div>
+<div class="md2-clock-minutes" [class.active]="!_view">
+  <div *ngFor="let m of _minutes"
+       class="md2-clock-minute"
+       (click)="setTime($event)"
+       [class.active]="_minute == m.minute"
+       [style.top.px]="m.top"
+       [style.left.px]="m.left">{{ m.minute }}</div>
+</div>

@@ -1,0 +1,7 @@
+<div class="overlay" (click)="close()"></div>
+<div class="drawer-container" [ngClass]="type">
+  <div class="back">
+    <md-icon class="clickable" (click)="close()">arrow_back</md-icon>
+  </div>
+  <ng-content></ng-content>
+</div>

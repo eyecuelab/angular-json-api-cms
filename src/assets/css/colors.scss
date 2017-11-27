@@ -1,0 +1,27 @@
+$color-pure-white: #ffffff;
+$color-pure-black: #000000;
+$color-white: #f1f1f1;
+$color-grey: #878787;
+$color-light-grey: #dbdbdb;
+$color-dark-grey: #36393a;
+$color-darker-grey: #262828;
+$color-red: #db3c23;
+$color-godzilla-red: #982D21;
+$color-blue: #2fc3ee;
+$color-yellow: #e9cf58;
+$color-green: #237b04;
+$color-tab-gray: #575757;
+$color-light-green: #3cb371;
+
+$colors: (
+  pure-white: $color-pure-white,
+  white: $color-white,
+  grey: $color-grey,
+  light-grey: $color-light-grey,
+  dark-grey: $color-dark-grey,
+  red: $color-red,
+  blue: $color-blue,
+  yellow: $color-yellow,
+  green: $color-green,
+  light-green: $color-light-green
+);

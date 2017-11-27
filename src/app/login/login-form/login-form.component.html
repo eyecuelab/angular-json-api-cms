@@ -1,0 +1,7 @@
+<form flex layout="column" layout-align="center" [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Login</h1>
+  <app-text-input [action]="action" field="email" floatPlaceholder></app-text-input>
+  <app-text-input [action]="action" field="password" floatPlaceholder></app-text-input>
+  <button md-button type="submit" [disabled]="!form.valid" class="btn-submit">Submit</button>
+  <a class="text-sm form-link" routerLink="/reset-password" (click)="form.reset()">Forgot Password</a>
+</form>

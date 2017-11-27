@@ -1,0 +1,6 @@
+<form flex layout="column" layout-align="center" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="text-md">You are logged in as</div>
+  <h1>{{ user.attributes.first_name }} {{ user.attributes.last_name }}</h1>
+  <button md-button class="btn-submit text-center" type="submit">Logout</button>
+</form>
+<a *ngIf="isHomeAvailable" routerLink="/devices" class="text-sm text-center">Home</a>

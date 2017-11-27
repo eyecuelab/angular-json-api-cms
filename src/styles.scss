@@ -1,0 +1,559 @@
+@import 'assets/css/index'; //Fonts
+@import url( 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('/assets/fonts/bebas-neue/3333E6_0_0.eot');
+  src: url('/assets/fonts/bebas-neue/3333E6_0_0.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/bebas-neue/3333E6_0_0.woff2') format('woff2'), url('/src/assets/fonts/bebas-neue/3333E6_0_0.woff') format('woff'), url('/assets/fonts/bebas-neue/3333E6_0_0.ttf') format('truetype');
+}
+// Color Classes
+@each $name, $color in $colors {
+  .background-#{$name} {
+    background-color: $color !important;
+  }
+
+  .color-#{$name} {
+    color: $color !important;
+  }
+}
+// Resets
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.shadow {
+  position: absolute;
+  top: -1px;
+  left: -5px;
+  right: -5px;
+  height: 1px;
+  z-index: 1;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+button[md-button] {
+  margin: 10px 0;
+  border-radius: 0;
+  min-width: 120px;
+
+  &.btn-submit {
+    font-family: $header-font-family;
+    font-size: 12pt;
+    letter-spacing: 0.8pt;
+    text-transform: uppercase;
+    padding: 4px;
+    color: $color-pure-white;
+    background-color: $color-green;
+    height: 42px;
+  }
+
+  &.btn-upload {
+    font-family: $paragraph-font-family;
+    font-size: 12pt;
+    padding: 4px;
+    color: $color-pure-white;
+    background-color: $color-dark-grey;
+    height: 42px;
+  }
+
+  &.btn-action, &.btn-cancel, &.btn-delete {
+    font-family: $header-font-family;
+    text-transform: uppercase;
+    margin: 4px 0;
+    padding: 0 10px;
+    border: 2px solid $color-dark-grey;
+    font-size: 12pt;
+    letter-spacing: 0.6pt;
+    height: 42px;
+
+    md-icon {
+      height: auto;
+      width: auto;
+      font-size: 22px;
+    }
+
+    .button-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &[disabled] {
+      opacity: 0.6;
+    }
+  }
+
+  &.btn-action {
+    background-color: $color-dark-grey;
+    color: $color-white;
+
+    &[disabled] {
+      background-color: $color-grey;
+      border-color: $color-grey;
+    }
+  }
+
+  &.btn-cancel {
+    background-color: $color-white;
+    color: $color-dark-grey;
+
+    &[disabled] {
+      background-color: $color-light-grey;
+      border-color: $color-grey;
+    }
+  }
+}
+
+input[mdInput] {
+  &:-webkit-autofill,
+  &:-webkit-autofill:active,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:hover {
+    transition: all 5000s ease-in-out 5000s;
+    transition-property: background-color, color;
+  }
+  font-family: $paragraph-font-family;
+  color: $color-dark-grey;
+  font-size: 11pt;
+}
+
+md-input-container {
+  margin-bottom: 6px;
+
+  .form-error {
+    font-family: $paragraph-font-family;
+    font-size: 9pt;
+    position: absolute;
+    bottom: -22px;
+    color: $color-red;
+  }
+
+  .mat-placeholder-required {
+    display: none !important;
+  }
+}
+
+md-select {
+  font-family: $paragraph-font-family !important;
+}
+
+.mat-select-content {
+  text-transform: uppercase;
+  md-option.mat-option {
+    font-family: $paragraph-font-family !important;
+  }
+}
+
+md-checkbox {
+  &.mat-checkbox-disabled {
+    opacity: .3;
+  }
+  &.mat-checkbox-indeterminate, &.mat-checkbox-checked {
+    .mat-checkbox-background {
+      background-color: #909090 !important;
+    }
+  }
+}
+
+.cdk-overlay-pane {
+  font-family: $paragraph-font-family;
+
+  .md2-calendar-day.selected,
+  .md2-calendar-day.selected:hover,
+  .md2-clock-center,
+  .md2-clock-hand,
+  .md2-clock-hand::before,
+  .md2-clock-hour.active,
+  .md2-clock-minute.active,
+  .md2-datepicker-header {
+    background-color: $color-yellow;
+  }
+
+  .md2-datepicker-actions .md2-button,
+  .md2-calendar-year.selected {
+    color: $color-yellow;
+  }
+
+  .md2-calendar-day.today {
+    color: rgba(0,0,0,.87);
+    font-weight: bold;
+  }
+}
+
+md2-colorpicker {
+  margin-top: -16px;
+  min-width: 0;
+
+  /deep/ .md2-colorpicker-input {
+    min-width: 0;
+
+    &.input-focused {
+      color: $color-darker-grey;
+      border-color: $color-darker-grey;
+    }
+
+    input.md2-colorpicker-value {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+}
+
+new-md2-datepicker {
+  margin: 2px 0 4px;
+  width: 100%;
+
+  .md2-datepicker-trigger {
+    padding: 0;
+    width: 100%;
+
+    .md2-datepicker-button {
+      display: none;
+    }
+
+    .md2-datepicker-value {
+      @extend .text-md;
+    }
+
+    .md2-datepicker-input.md2-datepicker-input-focused {
+      color: inherit;
+      border-color: inherit;
+    }
+  }
+}
+
+@for $i from 1 through 20 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}
+
+// Reset classes
+.no-margin {
+  margin: 0;
+}
+
+@include mobile {
+  .desktop {
+    display: none !important;
+  }
+}
+
+@include desktop {
+  .mobile {
+    display: none !important;
+  }
+}
+
+// Containers
+.content {
+  flex: 1;
+}
+
+.page-container {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+
+  .page-container-inner {
+    height: 100%;
+  }
+
+  .right-container {
+    width: 100%;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    @include mobile {
+      min-width: 100%;
+    }
+  }
+}
+
+// Mobile Lists/Cards
+
+@include mobile {
+
+  .list-container {
+    background-color: $color-pure-white;
+    overflow: scroll;
+
+    .list {
+
+      .list-row {
+        background-color: $color-white;
+        margin: 12px !important;
+        padding: 10px !important;
+        display: flex;
+        box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        border-radius: 0;
+        height: 165px;
+
+        &:first-child {
+          margin-top: 0 !important;
+        }
+
+        h3 {
+          margin-bottom: 7px;
+        }
+
+        .details {
+          position: relative;
+          min-width: 120px;
+          outline: none;
+          flex: 1;
+
+          .info {
+            margin: 10px 0 20px;
+            outline: none;
+
+            h3 {
+              margin: 0 0 0.5em;
+            }
+          }
+
+          .text-sm {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .button-container {
+          margin-left: 3px;
+          min-width: 0;
+          align-items: center;
+          flex: 1;
+
+          button {
+            height: 38px;
+            width: 100%;
+
+            &:not(:last-child) {
+              margin-bottom: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Text
+.text-center {
+  text-align: center;
+}
+
+.text {
+  font-family: $paragraph-font-family;
+  color: $color-dark-grey;
+  margin: 0.1em 0 0.3em;
+}
+
+.text-sm {
+  @extend .text;
+  font-size: 9pt;
+}
+
+.text-md {
+  @extend .text;
+  font-size: 11pt;
+}
+
+.text-lg {
+  @extend .text;
+  font-size: 15pt;
+}
+
+p {
+  @extend .text-md;
+}
+
+.text-header {
+  font-family: $header-font-family;
+  text-transform: uppercase;
+  margin: 0.3em 0 0.7em;
+  padding: 0;
+  font-weight: 400;
+}
+
+h1 {
+  @extend .text-header;
+  font-size: 28pt;
+  letter-spacing: 0.3pt;
+}
+
+h2 {
+  @extend .text-header;
+  font-size: 20pt;
+  letter-spacing: 0.3pt;
+}
+
+h3 {
+  @extend .text-header;
+  font-size: 12pt;
+  letter-spacing: 0.5pt;
+}
+
+.table-header {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  background: #b8b8b8;
+  color: $color-pure-white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 10px;
+}
+// Animations
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+            transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+            transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+            transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+            transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+            transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+
+@keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-6px);
+            transform: translateX(-6px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+  }
+  80% {
+    -webkit-transform: translateX(4px);
+            transform: translateX(4px);
+  }
+  90% {
+    -webkit-transform: translateX(-4px);
+            transform: translateX(-4px);
+  }
+}

@@ -1,0 +1,9 @@
+<form [formGroup]="form" flex layout="row" layout-align="center center" class="pager">
+  <ng-template ngFor let-page [ngForOf]="pages">
+    <p *ngIf="!page; else elseBlock" class="ellipses">&hellip;</p>
+    <ng-template #elseBlock>
+      <p *ngIf="page === currentPage" class="selected" providerBgColor disabled>{{ page }}</p>
+      <p *ngIf="page !== currentPage" class="clickable" providerBgColor (click)="navToPage(page)">{{ page }}</p>
+    </ng-template>
+  </ng-template>
+</form>

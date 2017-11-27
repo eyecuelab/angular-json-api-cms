@@ -1,0 +1,12 @@
+<app-filters *ngIf="showFilters" filterControls #filterControls [action]="action" (changeFilters)="updateList($event)" [include]="['event', 'agent', 'include_later_stages']" [resetOnFieldChange]="resetOnFieldChange">
+</app-filters>
+
+<div class="main-content" [class.disabled]="filterControls?.isOpen">
+  <div *ngIf="showFilters" class="disabled-overlay" (click)="filterControls.close()"></div>
+  <div class="filter-bar" layout="row" layout-align="space-between center">
+    <app-filter-display *ngIf="showFilters" [action]="action" [header]="" (toggleFilters)="filterControls?.toggle()"></app-filter-display>
+    <div></div>
+    <app-pager [action]="action" (changePage)="updateList($event)" [returnParams]="returnParams"></app-pager>
+  </div>
+  <ng-content select="[listComponent]"></ng-content>
+</div>

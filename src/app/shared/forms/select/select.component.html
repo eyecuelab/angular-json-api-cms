@@ -1,0 +1,8 @@
+<div [formGroup]="form">
+  <md-select [formControlName]="formControlName" [placeholder]="placeholder | uppercase" [floatPlaceholder]="floatPlaceholder === false ? 'never' : 'auto'" [class.hide-placeholder]="floatPlaceholder === false">
+    <md-option *ngFor="let option of action.fields[this.field].options" [value]="option.value">{{ option.label }}</md-option>
+  </md-select>
+  <div *ngIf="formError" class="form-error">
+    {{ formError }}
+  </div>
+</div>

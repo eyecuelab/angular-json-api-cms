@@ -1,0 +1,9 @@
+<md-input-container [formGroup]="form" [floatPlaceholder]="floatPlaceholder === false ? 'never' : 'auto'" [class.hide-placeholder]="floatPlaceholder === false">
+  <input #input mdInput [pattern]="pattern" [maxlength]="maxLength" [minlength]="minLength"
+         [formControlName]="formControlName" [type]="inputType" [placeholder]="placeholder | uppercase"
+         [autofocus]="autofocus !== false"
+         (blur)="onBlur()">
+  <div *ngIf="formError" class="form-error">
+    {{ formError | cleanString }}
+  </div>
+</md-input-container>

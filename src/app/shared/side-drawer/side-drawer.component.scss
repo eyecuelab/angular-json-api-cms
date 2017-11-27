@@ -1,0 +1,98 @@
+@import '../../../assets/css/variables-mixins';
+
+:host {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  pointer-events: none;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 200vw;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s;
+  }
+
+  .drawer-container {
+    z-index: 1001;
+    display: flex;
+    position: relative;
+    background-color: $color-white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    max-width: 100vw;
+    flex-direction: row;
+    pointer-events: all;
+    transition: transform .5s;
+    transform: translate3d(100%, 0, 0);
+
+    .back {
+      width: $drawer-gutter;
+      text-align: right;
+
+      md-icon {
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        border: 3px solid black;
+        font-size: 23px;
+        height: auto;
+        width: auto;
+        margin: 39px 15px 0 0;
+        transition: all 0.4s;
+
+        &:hover {
+          -webkit-transform: rotate(180deg) scale(1.1);
+                  transform: rotate(180deg) scale(1.1);
+        }
+      }
+    }
+  }
+  @include mobile {
+    .drawer-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform .4s;
+      .back {
+        display: none;
+      }
+    }
+  }
+}
+
+:host(.is-open) {
+  > .overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  > .drawer-container {
+    transform: translate3d(0, 0, 0);
+    box-shadow: -5px 0 5px -5px rgba(0,0,0,.3);
+  }
+}
+
+:host(.is-hidden) {
+  > .overlay {
+    display: none;
+  }
+
+  > .drawer-container {
+    width: 200px;
+
+    > .back {
+      display: none;
+    }
+  }
+}

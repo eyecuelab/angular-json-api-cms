@@ -1,0 +1,269 @@
+@import '../../assets/css/variables-mixins';
+
+h1,
+h2,
+h3,
+p,
+pre {
+  margin: 0;
+  color: white;
+}
+
+h1 {
+  font-size: 14vw;
+}
+
+h2 {
+  font-size: 2vw;
+  letter-spacing: 0.05vw;
+}
+
+h3 {
+  font-size: 1.33vw;
+  margin-top: 1vw;
+}
+
+p {
+  font-size: 1.11vw;
+  font-weight: 300;
+}
+
+button {
+  background-color: rgba(0,0,0,.2);
+  margin-top: 20px;
+
+  h3 {
+    margin: 2px;
+  }
+}
+
+.page-container {
+  background-color: $color-godzilla-red;
+
+  .text-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40vh;
+    justify-content: center;
+
+    pre {
+      flex: 1;
+      margin-top: 3vw;
+      margin-left: 20px;
+      min-width: 0;
+      opacity: 0.8;
+      font-size: 8pt;
+    }
+
+    .main-text {
+      flex: 2;
+      min-width: 31vw;
+    }
+  }
+
+  .city-container {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+
+    .city {
+      $height: 50vh;
+      height: $height;
+      min-width: $height * 4.5;
+    }
+
+    .city-background {
+      background-color: black;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 9vh;
+    }
+    animation: 1.8s city-shake infinite;
+  }
+
+  .city-shadow {
+    width: 100%;
+    opacity: 0.6;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+
+    .city {
+      $height: 50vh;
+      height: $height;
+      min-width: $height * 4.5;
+    }
+
+    .city-background {
+      background-color: black;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 9vh;
+    }
+    animation: 1.8s blur-shake infinite;
+  }
+
+  .monster {
+    $step-timing: 1.8s;
+    position: absolute;
+    height: 34vh;
+    bottom: 0;
+    animation: 1.8s infinite monster-step, 90s infinite monster-move;
+    animation-delay: -14.4s;
+  }
+  @keyframes monster-step {
+    0% {
+      bottom: 0;
+      transform: rotate(0);
+    }
+
+    20% {
+      transform: rotate(2deg);
+    }
+
+    30% {
+      bottom: 1.6vh;
+    }
+
+    32% {
+      bottom: 0;
+    }
+
+    34% {
+      transform: rotate(0);
+    }
+  }
+  @keyframes monster-move {
+    $iterations: 50;
+    $percent: 1% / $iterations;
+    $right: -30vw;
+    @for $i from 0 to $iterations {
+      $base: $i * $percent * 100;
+
+      #{$base} {
+        right: $right;
+      }
+
+      #{$base + $percent * 32} {
+        right: $right + 2.5vw;
+      }
+
+      #{$base + $percent * 34} {
+        right: $right + 3vw;
+      }
+      $right: $right + 3vw;
+    }
+
+    100% {
+      right: 120vw;
+    }
+  }
+  @keyframes city-shake {
+    30% {
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    37% {
+      transform: translateY(.8vh);
+    }
+
+    44% {
+      transform: translateY(0);
+      filter: blur(.22vh);
+    }
+
+    48% {
+      transform: translateY(.3vh);
+    }
+
+    52% {
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  @keyframes blur-shake {
+    36% {
+      transform: translateY(0);
+    }
+
+    43% {
+      transform: translateY(.8vh);
+    }
+
+    50% {
+      transform: translateY(-.3vh);
+    }
+
+    54% {
+      transform: translateY(.3vh);
+    }
+
+    58% {
+      transform: translateY(0);
+    }
+  }
+}
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 126pt;
+  }
+
+  h2 {
+    font-size: 18pt;
+  }
+
+  h3 {
+    font-size: 12pt;
+    margin-top: 12px;
+  }
+
+  p {
+    font-size: 10pt;
+  }
+
+  .page-container .text-container .main-text {
+    min-width: 372px;
+  }
+}
+@media (max-width: 800px) {
+  .page-container {
+    .text-container {
+      flex-direction: column;
+
+      pre {
+        margin-left: 0;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .page-container {
+    .text-container {
+
+      .main-text {
+        min-width: 0;
+        padding: 10px;
+      }
+
+      pre {
+        padding: 10px;
+      }
+    }
+
+    h1 {
+      font-size: 85pt;
+    }
+
+    h2 {
+      font-size: 14pt;
+    }
+  }
+}

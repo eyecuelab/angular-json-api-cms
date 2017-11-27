@@ -1,0 +1,42 @@
+flash-messages {
+  position: absolute;
+  display: block;
+  z-index: 10000;
+  width: 100%;
+
+  .flash-message {
+    text-align: center;
+    padding: 1rem;
+    animation: ease-in-out 5000ms 0s slideDown;
+
+    p {
+      font-size: 13pt;
+    }
+
+    &.alert-error {
+      background-color: #ffd5d5;
+    }
+
+    &:not(.alert-error) {
+      background-color: #d5ffd9;
+    }
+
+    &.flash-animation {
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-65px);
+    }
+    10% {
+      transform: translateY(0px);
+    }
+    90% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-65px);
+    }
+  }
+}

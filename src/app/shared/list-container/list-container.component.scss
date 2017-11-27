@@ -1,0 +1,57 @@
+@import '../../../assets/css/variables-mixins';
+
+:host {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+
+  .main-content {
+    flex: 1;
+    min-width: 100%;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+
+    .filter-bar {
+      padding: 4px 10px 4px 17px;
+      min-height: 50px;
+    }
+
+    .disabled-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url('~/assets/img/shared/disabled-overlay.png');
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 9999;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+
+      .disabled-overlay {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  @include mobile {
+    .main-content {
+      .filter-bar {
+        padding: 5px 10px;
+
+        app-pager {
+          position: absolute;
+          right: 10px;
+        }
+      }
+    }
+  }
+}

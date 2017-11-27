@@ -1,0 +1,60 @@
+@import '../../../assets/css/variables-mixins';
+
+:host {
+  z-index: 1002;
+
+  .container {
+    font-size: 8pt;
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    height: 50px;
+    max-width: 100%;
+    color: $color-grey;
+    background: $color-dark-grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+
+    .links {
+
+      a {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      span {
+        padding: 0 5px;
+      }
+    }
+
+    .signature {
+      font-size: 7pt;
+
+      span {
+        margin-right: 8px;
+      }
+
+      img {
+        color: $color-grey;
+        opacity: 0.5;
+        height: 25px;
+      }
+    }
+  }
+
+  @include mobile {
+
+    .divider {
+      display: none;
+    }
+    .links {
+      text-align: center;
+    }
+
+    .signature {
+      display: none;
+    }
+  }
+}

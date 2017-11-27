@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <md-list>
+    <div class="title" layout="row" layout-align="start center">
+      <md-icon class="clickable mobile" (click)="close()">arrow_back</md-icon>
+      <h2>New Device</h2>
+    </div>
+    <md-divider></md-divider>
+  </md-list>
+
+  <div class="content">
+    <div *ngIf="action.field('serial_number')">
+      <h3>Serial Number</h3>
+      <app-text-input [action]="action" field="serial_number"></app-text-input>
+    </div>
+
+    <div *ngIf="action.field('name')">
+      <h3>Product Name</h3>
+      <app-text-input [action]="action" field="name"></app-text-input>
+    </div>
+
+    <div *ngIf="action.field('active')">
+      <md-checkbox formControlName="active">Is Active</md-checkbox>
+    </div>
+
+    <br>
+
+    <div class="button-container" layout="row">
+      <button md-button type="submit" class="btn-action" [disabled]="action.submitting || !form.valid">
+        <div class="button-content">
+          <md-icon>insert_invitation</md-icon>
+          <span>Create</span>
+        </div>
+      </button>
+
+      <button md-button type="button" class="btn-cancel" (click)="close()" queryParamsHandling="preserve">
+        <div class="button-content">
+          <md-icon>clear</md-icon>
+          <span>Cancel</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</form>

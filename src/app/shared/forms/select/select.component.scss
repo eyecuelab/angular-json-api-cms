@@ -1,0 +1,33 @@
+@import '../../../../assets/css/variables-mixins';
+
+md-select {
+  margin-top: 18px;
+  margin-bottom: 6px;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 11pt;
+  color: $color-dark-grey;
+
+  /deep/ .mat-select-trigger {
+    margin-bottom: 1em;
+  }
+
+  /deep/ .mat-select-placeholder::after {
+    display: none !important;
+  }
+
+  &.hide-placeholder {
+    margin-top: -5px;
+    /deep/ .mat-select-placeholder {
+      padding: 0;
+    }
+  }
+}
+
+.form-error {
+  font-family: $paragraph-font-family;
+  font-size: 9pt;
+  position: absolute;
+  bottom: -22px;
+  color: $color-red;
+}

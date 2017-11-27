@@ -1,0 +1,69 @@
+@import '../../../../assets/css/variables-mixins';
+
+.filter-display {
+  height: 40px;
+
+  .icon {
+    transform: rotate(270deg);
+    margin-right: 5px;
+    font-size: 20pt;
+    height: auto;
+    width: auto;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1) rotate(270deg);
+    }
+  }
+
+  .filters {
+    align-items: center;
+
+    .text-sm {
+      color: $color-grey;
+    }
+
+    .flair {
+      text-transform: uppercase;
+    }
+
+    > div {
+      padding: 5px;
+      .filter {
+        position: relative;
+        margin-right: 8px;
+      }
+      .filter:not(:last-child)::after {
+        content: ',';
+        position: absolute;
+        right: -4px;
+        bottom: 0;
+      }
+    }
+  }
+
+  h2 {
+    display: none;
+    font-size: 18pt;
+    margin: 4px 0;
+  }
+}
+@include mobile {
+  .filter-display {
+
+  .icon {
+    position: relative;
+    margin: 0;
+  }
+
+    h2 {
+      display: block;
+    }
+  }
+
+  .filters {
+    span.text-sm {
+      font-size: 8pt;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../../assets/css/index';
+
+:host {
+  padding: 10px;
+  margin-top: 50px;
+
+  h2, h3 {
+    font-family: $header-font-family;
+    margin: 1em 0 .5em 0;
+    color: $color-light-grey;
+  }
+
+  p {
+    color: $color-light-grey;
+  }
+
+  .mat-button {
+    text-decoration: none;
+  }
+
+  .container {
+    overflow-y: auto;
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+    max-height: 100%;
+
+    .contact-us {
+      md-icon {
+        font-size: 16px;
+        position: relative;
+        width: 20px;
+        top: 3px;
+      }
+      .italics {
+        font-style: italic;
+      }
+    }
+
+    .non-owner-notice {
+      color: $color-red;
+    }
+  }
+
+  @include mobile {
+    margin-top: 10px;
+
+    .container {
+      text-align: justify;
+    }
+  }
+}

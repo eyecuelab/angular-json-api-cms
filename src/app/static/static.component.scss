@@ -1,0 +1,24 @@
+@import '../../assets/css/index';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  header {
+    height: 60px;
+    background-color: $color-yellow;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .content {
+    // background-image: url("../../assets/img/login/background.jpg");
+    background-color: $color-grey;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+  }
+}

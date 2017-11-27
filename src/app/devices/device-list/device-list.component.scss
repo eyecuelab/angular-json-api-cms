@@ -1,0 +1,143 @@
+@import '../../../assets/css/variables-mixins';
+
+:host {
+  height: 100%;
+  padding-left: 15px;
+  padding-top: 15px;
+  overflow: scroll;
+  position: relative;
+
+  .add-button {
+    width: 70px;
+    height: 70px;
+    min-width: 0;
+    color: $color-white;
+    background-color: $color-light-green;
+    position: absolute;
+    padding: 0;
+    border-radius: 50%;
+    right: 30px;
+    top: 0px;
+    overflow: hidden;
+    z-index: 3;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.4);
+
+    md-icon {
+      height: auto;
+      width: auto;
+      font-size: 30pt;
+    }
+  }
+
+  .totals-row {
+    width: 600px;
+    padding: 10px 0 20px 50px;
+
+    .text-lg {
+      font-size: 20pt;
+      font-weight: 300;
+      margin-bottom: 0px;
+    }
+  }
+
+  .subtext {
+    text-transform: uppercase;
+    color: $color-grey;
+    opacity: .75;
+    font-size: 8pt;
+
+    &.paid-at {
+      font-style: italic;
+      text-align: center;
+      align-self: center;
+    }
+  }
+
+  .cell:first-child {
+    padding: 0;
+  }
+
+  .cell {
+    padding: 10px 5px;
+
+    &.button-cell {
+      min-width: 275px;
+    }
+
+    &.icon-cell {
+      width: 40px;
+
+      md-icon {
+        height: 27px;
+        width: 27px;
+        font-size: 27px;
+      }
+    }
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  md-list {
+    padding-top: 0;
+
+    .list-row {
+      height: 60px;
+      padding-left: 10px;
+      margin: 0;
+      align-items: center;
+      color: $color-tab-gray;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      &.late {
+        color: $color-red;
+      }
+
+      h3.clickable {
+        outline: none;
+      }
+
+      .late {
+        color: $color-red;
+        font-weight: 500;
+      }
+
+      button {
+        margin-right: 5px;
+
+        &.pdf-button {
+          color: $color-dark-grey;
+          padding: 0px 10px;
+          min-width: 100px;
+
+          h3 {
+            display: flex;
+            align-items: center;
+          }
+
+          md-icon {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+
+  @include mobile {
+    padding: 0;
+
+    details {
+      width: 100%;
+    }
+
+    .list-row {
+      h3 {
+        padding-right: 5px;
+      }
+    }
+  }
+}

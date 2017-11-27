@@ -1,0 +1,21 @@
+<div class="nav">
+  <div class="provider-logo-container">
+    <div class="provider-background" providerBgColor></div>
+    <md-icon class="menu-icon clickable" (click)="toggle()">menu</md-icon>
+  </div>
+  <div class="nav-sections">
+    <button md-button routerLink="/devices" [disabled]="devicesRL.isActive" routerLinkActive="is-active" #devicesRL="routerLinkActive">
+      <div class="icon-container">
+        <md-icon class="icon">build</md-icon>
+        <h3>devices</h3>
+      </div>
+    </button>
+    <button md-button>
+      <div class="icon-container" hide-gt-xs routerLink="/logout">
+        <md-icon class="icon logout-icon">exit_to_app</md-icon>
+        <h3>Logout</h3>
+      </div>
+    </button>
+  </div>
+</div>
+<div class="overlay" (click)="toggle()"></div>

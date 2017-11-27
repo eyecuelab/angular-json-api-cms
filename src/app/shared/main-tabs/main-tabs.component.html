@@ -1,0 +1,14 @@
+<nav hide show-gt-xs>
+  <ul>
+    <li *ngFor="let tab of tabs" class="tab" [class.is-selected]="tab.active()">
+      <a [class.disabled]="tab.active()" (click)="changeTab(tab);" class="clickable"><h3>{{ tab.label }}</h3></a>
+    </li>
+  </ul>
+</nav>
+<nav hide-gt-xs class="mobile">
+  <ul>
+    <li *ngFor="let tab of tabs" class="tab" [class.is-selected]="tab.active()" flex="50">
+      <a [class.disabled]="tab.active()" (click)="changeTab(tab);" class="clickable"><h3>{{ tab.label }}</h3></a>
+    </li>
+  </ul>
+</nav>

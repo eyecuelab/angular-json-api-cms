@@ -1,0 +1,131 @@
+@import '../../../assets/css/variables-mixins';
+
+:host {
+  min-width: 0;
+  transition: min-width 0.3s;
+  position: relative;
+}
+
+:host(.is-open) {
+  min-width: $filters-width;
+}
+
+.filters {
+  overflow: scroll;
+  width: $filters-width;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+}
+
+md-slide-toggle {
+  margin-top: 20px;
+}
+
+form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  .text-sm {
+    color: $color-grey;
+    margin: 10px 0 0;
+  }
+
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-top: 24px;
+    margin-bottom: 2px;
+  }
+
+  md-checkbox,
+  md-input-container,
+  app-text-input,
+  md-radio-button,
+  md-select {
+    font-family: $paragraph-font-family;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 10.5pt;
+    margin: 1px 0;
+  }
+
+  app-text-input,
+  md-input-container,
+  md-select {
+    width: 100%;
+  }
+
+  // app-text-input {
+  //   margin-top: 6px;
+  //   margin-bottom: -20px;
+  // }
+
+  md-input-container {
+    font-size: 12pt;
+    margin-bottom: -10px;
+    margin-top: -5px;
+
+    /deep/ {
+      .mat-input-wrapper {
+        margin: 10px 0;
+      }
+
+      .mat-input-placeholder.mat-float {
+        &.mat-empty.mat-focused,
+        &:not(.mat-empty) {
+          display: none;
+        }
+      }
+    }
+
+    &.mat-focused/deep/ {
+      .mat-input-placeholder-wrapper {
+        display: none;
+      }
+    }
+  }
+
+  .button-container {
+    width: 100%;
+    margin-top: 60px;
+
+    button {
+      flex: 1;
+
+      md-icon {
+        transform: rotate(-90deg);
+      }
+
+      &.btn-action {
+        margin-left: 2px;
+      }
+
+      &.btn-cancel {
+        margin-right: 2px;
+      }
+    }
+  }
+}
+
+@include mobile {
+  :host(.is-open) {
+    min-width: 100vw;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  .filters {
+    width: 100%;
+  }
+}

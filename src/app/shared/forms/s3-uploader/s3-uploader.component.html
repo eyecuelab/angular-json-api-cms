@@ -1,0 +1,9 @@
+<div [formGroup]="form" class="s3-uploader" [ngClass]="{compact: compact !== false, fail: status === failStatus}"[class.compact]="compact !== false" appFileDrop (filesChangeEmitter)="filesDropped($event)" (filesInvalidEmitter)="invalidFiles($event)" [allowedExtensions]="allowedExtensions">
+  <p class="status">{{ status }}</p>
+  <input #fileUpload type="file" accept="{{ allowedExtensions.join(', ') }}" (change)="filesChanged($event)">
+  <button md-button providerBgColor class="btn-upload" type="button" (click)="fileUpload.click()">{{ buttonLabel }}</button>
+  <div class="progress-wrapper">
+    <md-progress-bar mode="determinate" value="{{ progress }}" *ngIf="showProgressBar"></md-progress-bar>
+  </div>
+  <p class="text-sm color-red fail-status">{{ failStatus }}</p>
+</div>

@@ -1,0 +1,6 @@
+<h1 md-dialog-title>Attention</h1>
+<div md-dialog-content>{{ warningMessage }}</div>
+<div md-dialog-actions align="end">
+  <button md-button (click)="dialogRef.close('cancel')">{{ yesNo ? "No" : "Cancel" }}</button>
+  <button md-button (click)="dialogRef.close('confirm')">{{ yesNo ? "Yes" : "Continue" }}</button>
+</div>

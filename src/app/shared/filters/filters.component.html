@@ -1,0 +1,62 @@
+<div class="filters">
+  <form [formGroup]="form" (ngSubmit)="submit()" flex layout="column" layout-align="center">
+    <div class="flex-3"></div>
+    <h2>Filter &amp; Sort</h2>
+    <div class="flex-1"></div>
+    <h3 class="keyword">Keyword</h3>
+    <div layout="row" layout-align="center center">
+    <!-- <app-text-input [action]="action" field="search" autofocus></app-text-input> -->
+    <md-input-container>
+      <input mdInput formControlName="search" type="search" placeholder="Name, Email, Etc.">
+    </md-input-container>
+    </div>
+    <p class="text-sm" *ngIf="searchDescription">{{ searchDescription }}</p>
+
+    <div class="flex-1"></div>
+    <div *ngFor="let filter of filters" layout="column">
+      <h3 *ngIf="filter.type == 'enum'">Filter By {{ filter.label | label }}</h3>
+      <div [ngSwitch]="filter.type" layout="column">
+        <div *ngSwitchCase="'enum'" layout="column">
+          <md-select formControlName="{{ filter.name }}" (ngModelChange)="changeSelected($event)">
+            <md-option value="">All</md-option>
+            <md-option *ngFor="let option of filter.options" [value]="option.value">{{ option.label }}</md-option>
+            <md-option *ngIf="filter.name == 'agent'" value="none">No Agent Assigned</md-option>
+          </md-select>
+        </div>
+        <!-- <div *ngSwitchCase="'date'" layout="column">
+          {{ filter.name }} todo: date filter
+        </div> -->
+        <div *ngSwitchCase="'boolean'" layout="column">
+          <md-slide-toggle *ngIf="currentlySelected" formControlName="{{ filter.name }}">{{ filter.label }}</md-slide-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1"></div>
+
+    <ng-template [ngIf]="sort">
+    <h3>{{ 'sort' | label }}</h3>
+    <div *ngIf="sort">
+      <md-select formControlName="sort">
+        <md-option *ngFor="let option of sort.options" [value]="option.value">{{ option.label }}</md-option>
+      </md-select>
+    </div>
+    <!-- <div class="flex-6"></div> -->
+    </ng-template>
+
+    <div class="button-container" layout="row">
+      <button md-button type="button" class="btn-cancel" (click)="close()">
+        <div class="button-content">
+          <md-icon>clear</md-icon>
+          <span>Cancel</span>
+        </div>
+      </button>
+      <button md-button type="submit" class="btn-action">
+        <div class="button-content">
+          <md-icon>tune</md-icon>
+          <span>Apply Filter</span>
+        </div>
+      </button>
+    </div>
+    <div class="flex-18"></div>
+  </form>
+</div>

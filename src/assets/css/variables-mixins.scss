@@ -1,0 +1,51 @@
+@import 'colors';
+@import 'font-families';
+@import 'flash-messages';
+
+
+// Breakpoints
+$mobile-max-width: 720px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-max-width - 1}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$mobile-max-width}) {
+    @content;
+  }
+}
+
+@mixin page-max-width($max-width) {
+  &.nav-collapsed {
+    @media (max-width: #{$max-width - $nav-width + $nav-collapsed-width}) {
+      @content;
+    }
+  }
+
+  &:not(.nav-collapsed) {
+    @media (max-width: #{$max-width}) {
+      @content;
+    }
+  }
+}
+
+// MEASUREMENTS:
+
+// Timing
+$transition-time: .3s; //must be equal to setTimeout in close() method of side-drawer.component.ts
+
+// Side Nav
+$nav-width: 220px;
+$nav-collapsed-width: 50px;
+
+// Filter Pane
+$filters-width: 380px;
+
+// Drawers
+$drawer-gutter: 70px;
+$detail-drawer-width: 600px;
+$control-drawer-width: 500px;
+$confirm-drawer-width: 300px;

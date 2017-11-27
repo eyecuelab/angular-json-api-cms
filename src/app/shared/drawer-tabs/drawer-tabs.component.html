@@ -1,0 +1,15 @@
+<nav>
+  <ul layout="row">
+    <li
+      *ngFor="let tab of tabs"
+      routerLinkActive="is-selected"
+      [routerLinkActiveOptions]="{exact: true}"
+      #rla="routerLinkActive"
+      [class.disabled]="rla.isActive"
+      class="tab">
+      <a [routerLink]="tab.link">
+        <h2>{{ tab.label }}</h2>
+      </a>
+    </li>
+  </ul>
+</nav>

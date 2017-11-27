@@ -1,0 +1,97 @@
+@import '../../../../assets/css/variables-mixins';
+
+.s3-uploader {
+  border: 1px solid $color-grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 190px;
+  position: relative;
+
+  .status {
+    margin: 25px 0 0;
+  }
+
+  .fail-status {
+    opacity: 0;
+    display: none;
+  }
+
+  input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  button.btn-upload {
+    margin-top: 20px;
+  }
+
+  .progress-wrapper {
+    height: 5px;
+    width: 90%;
+    margin-top: 15px;
+
+    md-progress-bar /deep/ .mat-progress-bar-buffer.mat-progress-bar-element {
+      background-color: $color-light-grey;
+    }
+  }
+
+  &.compact {
+    border: 0;
+    height: auto;
+    display: block;
+    margin: 8px 0;
+    height: 40px;
+    overflow: visible;
+    transition: height .2s;
+    transition-timing-function: ease-in-out;
+
+    .fail-status {
+      display: block;
+      transition: opacity .2s;
+      transition-timing-function: ease-in-out;
+    }
+
+    &.fail {
+      height: 52px;
+
+      .fail-status {
+        opacity: 1;
+      }
+
+    }
+
+    .status {
+      display: none;
+    }
+
+    button.btn-upload {
+      margin: 0;
+      padding: 4px;
+      background-color: $color-dark-grey !important;
+      color: $color-white;
+      font-family: $header-font-family;
+      font-size: 12pt;
+      letter-spacing: 0.5pt;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      height: 3px;
+      margin-top: 0;
+
+      md-progress-bar /deep/ .mat-progress-bar-buffer.mat-progress-bar-element {
+        background-color: $color-dark-grey;
+      }
+    }
+  }
+}

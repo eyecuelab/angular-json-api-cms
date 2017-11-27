@@ -1,0 +1,27 @@
+@import '../../../../assets/css/variables-mixins';
+
+:host {
+  height: 40px;
+  width: 200px;
+
+  .logo {
+    outline: none;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+  .no-logo {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 22pt;
+    margin: 0;
+    opacity: 0.85;
+    color: $color-dark-grey;
+  }
+}

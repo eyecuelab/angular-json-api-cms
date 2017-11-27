@@ -1,0 +1,51 @@
+@import '../../../assets/css/variables-mixins';
+
+:host {
+
+  .pager {
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2px;
+      height: 25px;
+      width: 25px;
+      border-radius: 13px;
+      font-weight: 600;
+      color: $color-pure-white;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .selected {
+      pointer-events: none;
+      background: $color-light-grey !important;
+      color: $color-dark-grey;
+    }
+
+    .ellipses {
+      width: 15px;
+      pointer-events: none;
+      color: $color-dark-grey;
+      background: none !important;
+    }
+  }
+
+  @include mobile {
+    .pager {
+      p {
+        background: $color-tab-gray !important;
+        font-size: 10pt;
+        height: 23px;
+        width: 23px;
+      }
+      .ellipses {
+        width: 10px;
+      }
+    }
+  }
+}

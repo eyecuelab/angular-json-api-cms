@@ -1,0 +1,8 @@
+<app-provider-logo></app-provider-logo>
+<div class="user-info">
+  <app-avatar [src]="user.attributes.image_url"></app-avatar>
+  <p class="label text-m">{{user.attributes.first_name}} <span>{{user.attributes.last_name}}</span></p>
+  <a (click)="logout()" class="clickable">
+    <md-icon class="icon">exit_to_app</md-icon>
+  </a>
+</div>

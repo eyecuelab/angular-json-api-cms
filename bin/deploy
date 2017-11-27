@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sed -i 's/<!-- API_URL -->/<script>window.api_url = "http:\/\/cms-api.eyecue.io\/";<\/script>/g' ./dist/index.html
+aws s3 cp ./dist/ s3://cms.com/ --recursive
