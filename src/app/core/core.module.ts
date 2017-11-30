@@ -4,7 +4,6 @@ import { HttpModule, Http } from '@angular/http';
 
 import { ErrorHandlingService } from './error-handling.service';
 import { SessionService } from './session.service';
-import { JobService } from './job.service';
 
 import { AuthGuard, AnonGuard } from './route.config';
 import { throwIfAlreadyLoaded } from './module-import-guard';
@@ -23,7 +22,6 @@ import { initConfig } from './init.provider';
   providers: [
     ErrorHandlingService,
     SessionService,
-    JobService,
     initConfig(),
     AuthGuard,
     AnonGuard,

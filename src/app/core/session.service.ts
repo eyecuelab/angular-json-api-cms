@@ -23,8 +23,7 @@ export class SessionService {
   }
 
   constructor (private api: ApiService) {
-    this.apiUrl = window['api_url'] || 'http://localhost:3003/';
-    this.apiUrl += sessionStorage.getItem('token') ? 'session' : 'anon';
+    this.apiUrl = window['api_url'] || 'http://localhost:3003/session';
   }
 
   get loggedIn(): boolean {

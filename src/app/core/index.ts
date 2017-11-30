@@ -10,4 +10,3 @@ export { ApiError } from './api/api_error';
 export { Relationship } from './api/relationship';
 export { ProviderService } from './provider.service';
 export { Session } from './api/session';
-export { JobService } from './job.service';
