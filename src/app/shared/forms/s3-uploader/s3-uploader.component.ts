@@ -132,7 +132,7 @@ export class S3UploaderComponent implements OnInit {
   }
 
   get uploadHost(): string {
-    return 'https://' + this.creds.s3Bucket + '.s3.amazonaws.com/';
+    return 'https://' + this.creds.s3Bucket + '.s3-us-west-2.amazonaws.com/';
   }
 
   get configAction(): Action {
