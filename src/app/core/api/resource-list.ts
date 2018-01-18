@@ -26,7 +26,10 @@ export class ResourceList {
 
   includeFromRel(rel: Relationship): Resource {
     return this.included.find((value): boolean => {
-      return rel.data.id === value.id && rel.data.type === value.type;
+      if (rel.data) {
+        return rel.data.id === value.id && rel.data.type === value.type;
+      }
+      return rel['id'] === value.id && rel['type'] === value.type;
     });
   }
 

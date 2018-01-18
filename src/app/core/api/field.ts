@@ -9,7 +9,7 @@ export class Option {
 export class Field {
   name: string;
   type: string;
-  value: string;
+  value: any;
   required: boolean;
   disabled: boolean;
   pattern: string;
@@ -39,7 +39,7 @@ export class Field {
     if (this.name === 'sort') {
       return this.default || this.options[0].value;
     }
-    return this.default || (this.type === 'boolean' ? false : '');
+    return this.default || (this.type === 'bool' ? false : '');
   }
 
   get currentValue(): any {

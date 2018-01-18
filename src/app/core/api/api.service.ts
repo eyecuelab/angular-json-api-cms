@@ -30,6 +30,9 @@ export class ApiService {
     for (const key in input) {
       if (input.hasOwnProperty(key)) {
         action.field(key).value = input[key];
+        if (action.field(key).type == 'number') {
+          action.field(key).value = parseFloat(action.field(key).value || 0);
+        }
       }
     }
 
@@ -50,10 +53,8 @@ export class ApiService {
 
     const response = this.sendRequest(action.url, requestArgs, type);
     response.subscribe(null, issue => {
-      if (!issue.warning) {
-        action.handleApiErrors(issue);
-        Observable.onErrorResumeNext(response);
-      }
+      action.handleApiErrors(issue);
+      Observable.onErrorResumeNext(response);
     });
 
     return response;

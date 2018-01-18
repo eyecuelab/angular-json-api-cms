@@ -23,7 +23,11 @@ export class Resource extends ResourceId {
     for (const key in instance.relationships) {
       if (instance.relationships.hasOwnProperty(key)) {
         const value = instance.relationships[key];
-        instance.relationships[key] = plainToClass<Relationship, Object>(Relationship, value);
+        if (value.data instanceof Array) {
+          // TODO
+        } else {
+          instance.relationships[key] = plainToClass<Relationship, Object>(Relationship, value);
+        }
       }
     }
     for (const value of (object.included || [])) {
@@ -47,8 +51,8 @@ export class Resource extends ResourceId {
     return data.id === this.id && data.type === this.type;
   }
 
-  includeFromRel(rel: Relationship): Resource {
-    return this.included.find(value => value.match(rel.data));
+  includeFromRel(rel: any): Resource {
+    return this.included.find(value => value.match(rel.data ? rel.data : rel));
   }
 
   includeFromRelName(name: string): Resource {
@@ -83,5 +87,17 @@ export class Resource extends ResourceId {
     }
     url = url.replace(/[\&]*[\w]+\=\{[\w]+\}/g, '').replace(/\?\&/g, '?');
     return url;
+  }
+
+  relItems(relName: string) {
+    const items = [];
+    if (!this.relation(relName)) {
+      return items;
+    }
+    const rels = this.relation(relName).data;
+    for (const i in rels) {
+      items.push(this.includeFromRel(rels[i]));
+    }
+    return items;
   }
 }
